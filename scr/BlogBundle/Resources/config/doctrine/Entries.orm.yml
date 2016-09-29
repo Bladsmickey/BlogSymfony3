@@ -1,0 +1,59 @@
+Entries:
+    type: entity
+    table: entries
+    indexes:
+        user_id:
+            columns:
+                - user_id
+        category_id:
+            columns:
+                - category_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        content:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+        status:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+        image:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    manyToOne:
+        user:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        category:
+            targetEntity: Categories
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

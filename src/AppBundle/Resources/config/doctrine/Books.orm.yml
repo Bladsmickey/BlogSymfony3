@@ -1,0 +1,26 @@
+AppBundle\Entity\Books:
+    type: entity
+    table: books
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        cantidad:
+            type: integer
+            nullable: false
+            unsigned: false
+        precio:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+EntryTag:
+    type: entity
+    table: entry_tag
+    indexes:
+        entry_id:
+            columns:
+                - entry_id
+        tag_id:
+            columns:
+                - tag_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        entry:
+            targetEntity: Entries
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entry_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tag:
+            targetEntity: Tags
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tag_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

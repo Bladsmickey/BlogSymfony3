@@ -1,0 +1,3 @@
+blog_homepage:
+    path:     /entradas
+    defaults: { _controller: BlogBundle:Default:index }
