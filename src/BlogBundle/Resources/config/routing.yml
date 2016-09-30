@@ -6,6 +6,18 @@ addtag:
   path: /add/tag
   defaults: { _controller: BlogBundle:Default:addTag }
 
+deletetag:
+  path: /delete/tag/{id}
+  defaults: { _controller: BlogBundle:Default:deleteTag }
+
+addcategory:
+  path: /add/category
+  defaults: { _controller: BlogBundle:Default:addCategory }
+
+deletecategory:
+  path: /delete/category/{id}
+  defaults: { _controller: BlogBundle:Default:deleteCategory }
+
 login:
   path: /register
   defaults: { _controller: BlogBundle:Auth:register }

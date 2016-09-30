@@ -14,7 +14,7 @@
 		</div>
 
 <div class="col-md-6">
-	<legend>Crear nueva etiqueta</legend>
+	<legend>Crear nueva Categoria</legend>
 	<div class="col-md-12">
 	{{form_start(form)}}
 			
@@ -35,11 +35,11 @@
 		</thead>
 		<tbody>
 
-		{% for tag in tags %}
+		{% for category in categories %}
 	    	<tr>
-				<td>{{tag.name}}</td>
-				<td>{{tag.description}}</td>
-				<td><a href="{{path("deletetag", {"id": tag.id})}}" title=""><span data-id=" {{tag.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Eliminar </td>
+				<td>{{category.name}}</td>
+				<td>{{category.description}}</td>
+				<td><a href="{{path("deletecategory", {"id": category.id})}}" title=""><span data-id=" {{category.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Eliminar </td>
 			</tr>
 	{% endfor %}
 			
@@ -49,4 +49,12 @@
 
 </div>
 
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+	
+
+</script>
 {% endblock %}
