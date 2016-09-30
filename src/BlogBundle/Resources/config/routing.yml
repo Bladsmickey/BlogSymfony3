@@ -18,6 +18,10 @@ deletecategory:
   path: /delete/category/{id}
   defaults: { _controller: BlogBundle:Default:deleteCategory }
 
+editcategory:
+  path: /edit/category/{id}
+  defaults: { _controller: BlogBundle:Default:editCategory }
+
 login:
   path: /register
   defaults: { _controller: BlogBundle:Auth:register }

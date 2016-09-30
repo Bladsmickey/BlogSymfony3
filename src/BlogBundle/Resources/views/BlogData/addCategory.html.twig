@@ -39,7 +39,9 @@
 	    	<tr>
 				<td>{{category.name}}</td>
 				<td>{{category.description}}</td>
+				<td><a href="{{path("editcategory", {"id": category.id})}}" title=""><span data-id=" {{category.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Editar</td>
 				<td><a href="{{path("deletecategory", {"id": category.id})}}" title=""><span data-id=" {{category.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Eliminar </td>
+
 			</tr>
 	{% endfor %}
 			

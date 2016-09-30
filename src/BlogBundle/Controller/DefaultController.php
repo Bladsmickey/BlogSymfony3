@@ -141,4 +141,41 @@ class DefaultController extends Controller
     	$this->session->getFlashBag()->add("session", $status);
     	return $this->redirectToRoute("addcategory");
     }
+
+        public function editCategoryAction(Request $request, $id){
+    	$em = $this->getDoctrine()->getEntityManager();
+    	$category_repo = $em->getRepository("BlogBundle:Category");
+    	$category = $category_repo->find($id);
+    	$form = $this->createForm(CategoryType::class, $category);
+
+    	 $form->handleRequest($request);
+
+    	if($form->isSubmitted()){
+    		if($form->isValid()){
+    	    		    $category->setName($form->get('name')->getData());
+    	    		    $category->setDescription($form->get('description')->getData());
+    	    		    $em = $this->getDoctrine()->getEntityManager();
+    	    		    $em->persist($category);
+    	    		    $flush = $em->flush();
+    	    		    	if($flush != null){
+    	    		    	    $status = "Categoria no actualizada";
+    	    		    	 }else{
+    	    		    	    $status = "Categoria actualizada";
+    	    		    	    	}
+    	    	
+    	     }else{
+    	    	$status = "Formulario Invalido";
+    	    }
+			$this->session->getFlashBag()->add("session", $status);
+    	    }
+
+    	$em = $this->getDoctrine()->getEntityManager();
+    	$categories_repo = $em->getRepository("BlogBundle:Category");
+    	$categories = $categories_repo->findAll();
+
+    	return $this->render('BlogBundle:BlogData:addCategory.html.twig', array(
+    		"form" => $form->createView(),
+    		"categories" => $categories,
+    		));
+    }
 }
