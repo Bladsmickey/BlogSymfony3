@@ -1,0 +1,52 @@
+{% extends "BlogBundle:Default:layout.html.twig" %}
+
+{% block content %}
+		
+		<div class="col-md-12">
+	{% if app.session.flashbag().get('session') is defined %}
+		{% for message in app.session.flashbag().get('session') %}
+			<div class="alert alert-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{message}}</strong>
+			</div>	    
+		{% endfor %}
+	{% endif %}
+		</div>
+
+<div class="col-md-6">
+	<legend>Crear nueva etiqueta</legend>
+	<div class="col-md-12">
+	{{form_start(form)}}
+			
+	{{form_end(form)}}
+	</div>
+
+</div>
+
+<div class="col-md-6">
+	
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th>Accion</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		{% for tag in tags %}
+	    	<tr>
+				<td>{{tag.name}}</td>
+				<td>{{tag.description}}</td>
+				<td><span class="glyphicon glyphicon-icon" aria-hidden="true"></span></td>
+			</tr>
+	{% endfor %}
+			
+		</tbody>
+	</table>
+	
+
+</div>
+
+{% endblock %}

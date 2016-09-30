@@ -2,6 +2,10 @@ blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
 
+addtag:
+  path: /add/tag
+  defaults: { _controller: BlogBundle:Default:addTag }
+
 login:
   path: /register
   defaults: { _controller: BlogBundle:Auth:register }
