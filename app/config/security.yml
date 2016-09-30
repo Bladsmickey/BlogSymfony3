@@ -2,7 +2,7 @@
 # http://symfony.com/doc/current/book/security.html
 security:
     encoders:
-        BlogBundle/Entity/User:
+        BlogBundle\Entity\User:
             algorithm: bcrypt
             cost: 4
 
@@ -22,13 +22,13 @@ security:
 
         main:
             anonymous: ~
-            provider: our_db_provider
             form_login:
                 login_path: /login
                 check_path: /login_check
             logout:
                 path: /logout
                 target: /
+            provider: our_db_provider
             # activate different ways to authenticate
 
             # http_basic: ~

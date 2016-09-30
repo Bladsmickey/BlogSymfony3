@@ -16,7 +16,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @var integer
+     * @var string
      */
     private $role;
 
@@ -58,7 +58,7 @@ class User implements UserInterface
     }
 
     public function eraseCredentials(){
-        
+
     }
 
 
@@ -75,7 +75,7 @@ class User implements UserInterface
     /**
      * Set role
      *
-     * @param integer $role
+     * @param string $role
      * @return User
      */
     public function setRole($role)
@@ -88,7 +88,7 @@ class User implements UserInterface
     /**
      * Get role
      *
-     * @return integer 
+     * @return string 
      */
     public function getRole()
     {

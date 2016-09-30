@@ -11,9 +11,10 @@ BlogBundle\Entity\User:
                 strategy: IDENTITY
     fields:
         role:
-            type: integer
+            type: string
+            length: 200
             nullable: false
-            unsigned: false
+            fixed: false
         name:
             type: string
             nullable: true
