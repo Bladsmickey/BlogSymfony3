@@ -1,0 +1,75 @@
+{% extends "BlogBundle:Default:layout.html.twig" %}
+
+{% block content %}
+		{% if app.session.flashbag().get('session') is defined %}
+		{% for message in app.session.flashbag().get('session') %}
+
+		<div class="alert alert-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{message}}</strong>
+		</div>
+		    
+		{% endfor %}
+		{% endif %}
+
+	<div class="col-md-6 col-md-offset-2">
+	{{form_start(form)}}
+			<!--div class="form-group">
+				<legend class="text-center">Registarse</legend>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Nombres:</span>
+				<div class="col-md-10">
+					<input type="text" name="_name" id="inputName" class="form-control" required="required">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Apellidos:</span>
+				<div class="col-md-10">
+					<input type="text" name="_surname" id="inputSurname" class="form-control" required="required">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Email:</span>
+				<div class="col-md-10">
+					<input type="text" name="_email" id="inputEmail" class="form-control" required="required">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Imagen:</span>
+				<div class="col-md-10">
+					<input type="text" name="_image" id="inputImage" class="form-control" required="required">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Contraseña:</span>
+				<div class="col-md-10">
+					<input type="password" name="_password" id="inputPassword" class="form-control" required="required">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="control-label col-md-2">Confirmar Contraseña:</span>
+				<div class="col-md-10">
+					<input type="password" name="_password_confirm" id="inputPasswordConfirm" class="form-control" required="required">
+				</div>
+			</div>
+
+			<input type="hidden" name="_target_path" id="target_path" class="form-control" value="/register">
+	
+			
+	
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-5">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div-->
+	{{form_end(form)}}
+	</div>
+
+{% endblock %}

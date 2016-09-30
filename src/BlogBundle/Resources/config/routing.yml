@@ -3,6 +3,10 @@ blog_homepage:
     defaults: { _controller: BlogBundle:Default:index }
 
 login:
+  path: /register
+  defaults: { _controller: BlogBundle:Auth:register }
+
+login:
   path: /login
   defaults: { _controller: BlogBundle:Auth:login }
 
