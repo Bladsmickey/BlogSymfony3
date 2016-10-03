@@ -4,30 +4,36 @@ namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Entry
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Entry
 {
 /**
  * @var \DateTime
  *
- * @ORM\Column(name="created", type="datetime")
+ * 
+ * @ORM\Column(name="created", type="datetime", nullable=false)
  */
 private $created;
  
 /**
  * @var \DateTime
  *
- * @ORM\Column(name="updated", type="datetime", nullable=true)
+ * 
+ * @ORM\Column(name="updated", type="datetime", nullable=false)
  */
 private $updated;
  
 /**
  * @var \DateTime
  *
- * @ORM\Column(name="deleted", type="datetime", nullable=true)
+ * 
+ * @ORM\Column(name="deleted", type="datetime", nullable=false)
  */
 private $deleted;
     /**
@@ -70,9 +76,9 @@ private $deleted;
     public function __construct(){
         $this->entryTag = new ArrayCollection();
     }
-    /**
+/**
  * Triggered on insert
- 
+* 
  * @ORM\PrePersist
  */
 public function onPrePersist()
@@ -82,7 +88,7 @@ public function onPrePersist()
  
 /**
  * Triggered on update
- 
+ *
  * @ORM\PreUpdate
  */
 public function onPreUpdate()
@@ -92,7 +98,7 @@ public function onPreUpdate()
  
 /**
  * Triggered on update
- 
+ *
  * @ORM\PreRemove
  */
 public function onPreRemove()
@@ -112,9 +118,7 @@ public function onPreRemove()
     }
 
     /**
-     * Get created
-     *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -122,19 +126,37 @@ public function onPreRemove()
     }
 
     /**
+     * @return \DateTime
+     */
+    public function setCreated($createdAt)
+    {
+        $this->created = $createdAt;
+        return $this;
+    }
+
+    /**
      * Get Updated
      *
-     * @return datetime 
+     * @return \DateTime 
      */
     public function getUpdated()
     {
         return $this->updated;
     }
 
+    /**
+     * @return \DateTime
+     */
+    public function setUpdated($updatedAt)
+    {
+        $this->updated = $updatedAt;
+        return $this;
+    }
+
      /**
      * Get Deleted
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getDeleted()
     {
@@ -259,7 +281,7 @@ public function onPreRemove()
     /**
      * Set category
      *
-     * @param \BlogBundle\Entity\Categories $category
+     * @param \BlogBundle\Entity\Category $category
      * @return Entry
      */
     public function setCategory(\BlogBundle\Entity\Category $category = null)

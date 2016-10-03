@@ -1,5 +1,6 @@
 BlogBundle\Entity\Category:
     type: entity
+    repositoryClass: BlogBundle\Repositories\CategoryRepository
     table: categories
     id:
         id:

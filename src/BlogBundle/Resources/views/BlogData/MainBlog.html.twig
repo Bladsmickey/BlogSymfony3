@@ -13,7 +13,7 @@
           {% for entry in entries %}
            <div class="blog-post">
             <h2 class="blog-post-title"> {{entry.title}} </h2>
-            <p class="blog-post-meta"> {{entry.created}} by <a href="#">{{entry.user.name}}</a></p>
+            <p class="blog-post-meta"> {{entry.created.date}} by <a href="#">{{entry.user.name}}</a></p>
 
             <p>{{entry.content}}</p>
             <hr>

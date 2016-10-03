@@ -1,5 +1,6 @@
 BlogBundle\Entity\Tag:
     type: entity
+    repositoryClass: BlogBundle\Repositories\TagRepository
     table: tags
     id:
         id:

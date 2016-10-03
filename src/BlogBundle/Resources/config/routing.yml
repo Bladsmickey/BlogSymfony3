@@ -4,35 +4,35 @@ blog_homepage:
 
 addtag:
   path: /add/tag
-  defaults: { _controller: BlogBundle:Default:addTag }
+  defaults: { _controller: BlogBundle:Tag:addTag }
 
 deletetag:
   path: /delete/tag/{id}
-  defaults: { _controller: BlogBundle:Default:deleteTag }
+  defaults: { _controller: BlogBundle:Tag:deleteTag }
 
 addcategory:
   path: /add/category
-  defaults: { _controller: BlogBundle:Default:addCategory }
+  defaults: { _controller: BlogBundle:Categories:addCategory }
 
 deletecategory:
   path: /delete/category/{id}
-  defaults: { _controller: BlogBundle:Default:deleteCategory }
+  defaults: { _controller: BlogBundle:Categories:deleteCategory }
 
 editcategory:
   path: /edit/category/{id}
-  defaults: { _controller: BlogBundle:Default:editCategory }
+  defaults: { _controller: BlogBundle:Categories:editCategory }
 
 addentry:
   path: /add/entry
-  defaults: { _controller: BlogBundle:Default:addEntry }
+  defaults: { _controller: BlogBundle:Entries:addEntry }
 
 deleteentry:
   path: /delete/entry/{id}
-  defaults: { _controller: BlogBundle:Default:deleteEntry }
+  defaults: { _controller: BlogBundle:Entries:deleteEntry }
 
 editentry:
   path: /edit/entry/{id}
-  defaults: { _controller: BlogBundle:Default:editEntry }
+  defaults: { _controller: BlogBundle:Entries:editEntry }
 
 register:
   path: /register

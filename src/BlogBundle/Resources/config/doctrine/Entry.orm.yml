@@ -39,20 +39,9 @@ BlogBundle\Entity\Entry:
             length: 255
             fixed: false
         created:
-            type: string
-            nullable: true
-            length: 255
-            fixed: false
+            type: datetime
         updated:
-            type: string
-            nullable: true
-            length: 255
-            fixed: false
-        deleted:
-            type: string
-            nullable: true
-            length: 255
-            fixed: false
+            type: datetime
     manyToOne:
         user:
             targetEntity: User
@@ -77,5 +66,7 @@ BlogBundle\Entity\Entry:
             targetEntity: EntryTag
             cascade: ["persist"]
             mappedBy: entry
-
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [onPrePersist]
+        preUpdate: [onPreUpdate]
+        preRemove: [onPreRemove]
