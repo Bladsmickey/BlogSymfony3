@@ -1,5 +1,6 @@
 BlogBundle\Entity\Entry:
     type: entity
+    repositoryClass: BlogBundle\Repositories\EntryRepository
     table: entries
     indexes:
         user_id:

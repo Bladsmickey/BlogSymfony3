@@ -3,6 +3,7 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Entry
@@ -47,7 +48,7 @@ class Entry
     protected $entryTag;
 
     public function __construct(){
-        $this->entryTag = new Doctrine\Common\Collections\ArrayCollection();
+        $this->entryTag = new ArrayCollection();
     }
 
 

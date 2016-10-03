@@ -15,12 +15,12 @@ class EntryTag
     private $id;
 
     /**
-     * @var \BlogBundle\Entity\Entries
+     * @var \BlogBundle\Entity\Entry
      */
     private $entry;
 
     /**
-     * @var \BlogBundle\Entity\Tags
+     * @var \BlogBundle\Entity\Tag
      */
     private $tag;
 
@@ -38,10 +38,10 @@ class EntryTag
     /**
      * Set entry
      *
-     * @param \BlogBundle\Entity\Entries $entry
+     * @param \BlogBundle\Entity\Entry $entry
      * @return EntryTag
      */
-    public function setEntry(\BlogBundle\Entity\Entries $entry = null)
+    public function setEntry(\BlogBundle\Entity\Entry $entry = null)
     {
         $this->entry = $entry;
 
@@ -51,7 +51,7 @@ class EntryTag
     /**
      * Get entry
      *
-     * @return \BlogBundle\Entity\Entries 
+     * @return \BlogBundle\Entity\Entry
      */
     public function getEntry()
     {
@@ -61,10 +61,10 @@ class EntryTag
     /**
      * Set tag
      *
-     * @param \BlogBundle\Entity\Tags $tag
+     * @param \BlogBundle\Entity\Tag $tag
      * @return EntryTag
      */
-    public function setTag(\BlogBundle\Entity\Tags $tag = null)
+    public function setTag(\BlogBundle\Entity\Tag $tag = null)
     {
         $this->tag = $tag;
 
@@ -74,7 +74,7 @@ class EntryTag
     /**
      * Get tag
      *
-     * @return \BlogBundle\Entity\Tags 
+     * @return \BlogBundle\Entity\Tag 
      */
     public function getTag()
     {
