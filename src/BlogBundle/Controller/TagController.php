@@ -26,8 +26,8 @@ class TagController extends Controller {
 			if ($form->isValid()) {
 				$tag = $tags_repo->findOneBy(array("name" => $form->get('name')->getData()));
 				if (count($tag) == 0) {
-					$flush = $tag_repo->SaveTag($form);
-					$status = (($saved_data != null) ? "Tag no agregada" : "Tag agregada");
+					$flush = $tags_repo->SaveTag($form);
+					$status = (($flush != null) ? "Tag no agregada" : "Tag agregada");
 				} else {
 					$status = "Tag existente";
 				}

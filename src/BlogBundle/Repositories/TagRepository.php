@@ -2,6 +2,7 @@
 // src/BlogBundle/Repositories/TagRepository.php
 namespace BlogBundle\Repositories;
 
+use BlogBundle\Entity\Tag;
 use Doctrine\ORM\EntityRepository;
 
 class TagRepository extends EntityRepository {
@@ -22,8 +23,8 @@ class TagRepository extends EntityRepository {
 		$em = $this->getEntityManager();
 		$tag_repo = $em->getRepository("BlogBundle:Tag");
 		$tag = new Tag();
-		$tag->setName($form->get('name')->getData());
-		$tag->setDescription($form->get('description')->getData());
+		$tag->setName($formdata->get('name')->getData());
+		$tag->setDescription($formdata->get('description')->getData());
 		$em->persist($tag);
 		$flush = $em->flush();
 		return $flush;
