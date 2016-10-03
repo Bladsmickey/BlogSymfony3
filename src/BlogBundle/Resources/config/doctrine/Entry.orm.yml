@@ -38,6 +38,21 @@ BlogBundle\Entity\Entry:
             nullable: true
             length: 255
             fixed: false
+        created:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        updated:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        deleted:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
     manyToOne:
         user:
             targetEntity: User

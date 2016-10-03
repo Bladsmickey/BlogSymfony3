@@ -27,7 +27,7 @@ class DefaultController extends Controller
 	$em = $this->getDoctrine()->getManager();
 	$entries_repo = $em->getRepository("BlogBundle:Entry");
 	$entries = $entries_repo->findAll();
-      return $this->render('BlogBundle:BlogData:MainBlog.html.twig', array());
+      return $this->render('BlogBundle:BlogData:MainBlog.html.twig', array("entries"=>$entries));
     }
 
 
