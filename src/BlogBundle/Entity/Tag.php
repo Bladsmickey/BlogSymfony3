@@ -2,92 +2,83 @@
 
 namespace BlogBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Tag
  */
-class Tag
-{
-    /**
-     * @var integer
-     */
-    private $id;
+class Tag {
+	/**
+	 * @var integer
+	 */
+	private $id;
 
-    /**
-     * @var string
-     */
-    private $name;
+	/**
+	 * @var string
+	 */
+	private $name;
 
-    /**
-     * @var string
-     */
-    private $description;
+	/**
+	 * @var string
+	 */
+	private $description;
 
-    protected $entryTag;
+	protected $entryTag;
 
-    public function __construct(){
-        $this->entryTag = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+	public function __construct() {
+		$this->entryTag = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set name
+	 *
+	 * @param string $name
+	 * @return Tag
+	 */
+	public function setName($name) {
+		$this->name = $name;
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Tag
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * Set description
+	 *
+	 * @param string $description
+	 * @return Tag
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Tag
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get description
+	 *
+	 * @return string
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
 
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function getEntryTag(){
-        return $this->entryTag;
-    }
+	public function getEntryTag() {
+		return $this->entryTag;
+	}
 }

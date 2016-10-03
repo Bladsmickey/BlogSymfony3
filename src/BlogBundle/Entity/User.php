@@ -2,211 +2,195 @@
 
 namespace BlogBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
- */ 
-class User implements UserInterface
-{
-    /**
-     * @var integer
-     */
-    private $id;
+ */
+class User implements UserInterface {
+	/**
+	 * @var integer
+	 */
+	private $id;
 
-    /**
-     * @var string
-     */
-    private $role;
+	/**
+	 * @var string
+	 */
+	private $role;
 
-    /**
-     * @var string
-     */
-    private $name;
+	/**
+	 * @var string
+	 */
+	private $name;
 
-    /**
-     * @var string
-     */
-    private $surname;
+	/**
+	 * @var string
+	 */
+	private $surname;
 
-    /**
-     * @var string
-     */
-    private $email;
+	/**
+	 * @var string
+	 */
+	private $email;
 
-    /**
-     * @var string
-     */
-    private $password;
+	/**
+	 * @var string
+	 */
+	private $password;
 
-    /**
-     * @var string
-     */
-    private $image;
+	/**
+	 * @var string
+	 */
+	private $image;
 
-    public function getUsername(){
-        return $this->email;
-    }
+	public function getUsername() {
+		return $this->email;
+	}
 
-    public function getSalt(){
-        return null;
-    }
+	public function getSalt() {
+		return null;
+	}
 
-    public function getRoles(){
-        return array($this->getRole());
-    }
+	public function getRoles() {
+		return array($this->getRole());
+	}
 
-    public function eraseCredentials(){
+	public function eraseCredentials() {
 
-    }
+	}
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set role
+	 *
+	 * @param string $role
+	 * @return User
+	 */
+	public function setRole($role) {
+		$this->role = $role;
 
-    /**
-     * Set role
-     *
-     * @param string $role
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get role
+	 *
+	 * @return string
+	 */
+	public function getRole() {
+		return $this->role;
+	}
 
-    /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
+	/**
+	 * Set name
+	 *
+	 * @param string $name
+	 * @return User
+	 */
+	public function setName($name) {
+		$this->name = $name;
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * Set surname
+	 *
+	 * @param string $surname
+	 * @return User
+	 */
+	public function setSurname($surname) {
+		$this->surname = $surname;
 
-    /**
-     * Set surname
-     *
-     * @param string $surname
-     * @return User
-     */
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get surname
+	 *
+	 * @return string
+	 */
+	public function getSurname() {
+		return $this->surname;
+	}
 
-    /**
-     * Get surname
-     *
-     * @return string 
-     */
-    public function getSurname()
-    {
-        return $this->surname;
-    }
+	/**
+	 * Set email
+	 *
+	 * @param string $email
+	 * @return User
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get email
+	 *
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
 
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
+	/**
+	 * Set password
+	 *
+	 * @param string $password
+	 * @return User
+	 */
+	public function setPassword($password) {
+		$this->password = $password;
 
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get password
+	 *
+	 * @return string
+	 */
+	public function getPassword() {
+		return $this->password;
+	}
 
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
+	/**
+	 * Set image
+	 *
+	 * @param string $image
+	 * @return User
+	 */
+	public function setImage($image) {
+		$this->image = $image;
 
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return User
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
+		return $this;
+	}
 
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
+	/**
+	 * Get image
+	 *
+	 * @return string
+	 */
+	public function getImage() {
+		return $this->image;
+	}
 }
