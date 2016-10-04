@@ -1,5 +1,5 @@
 <?php
-// src/BlogBundle/Repositories/EntryRepository.php
+// src/BlogBundle/Repositories/CategoryRepository.php
 namespace BlogBundle\Repositories;
 
 use BlogBundle\Entity\Category;

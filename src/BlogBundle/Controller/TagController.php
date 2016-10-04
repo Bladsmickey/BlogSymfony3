@@ -36,7 +36,7 @@ class TagController extends Controller {
 			}
 			$this->session->getFlashBag()->add("session", $status);
 		}
-		$tags = $tags_repo->findAll();
+		$tags = $tags_repo->AllTags();
 
 		return $this->render('BlogBundle:BlogData:addTag.html.twig', array(
 			"tags" => $tags,
@@ -46,7 +46,7 @@ class TagController extends Controller {
 	public function deleteTagAction($id) {
 		$em = $this->getDoctrine()->getManager();
 		$tag_repo = $em->getRepository("BlogBundle:Tag");
-		$tag = $tag_repo->find($id);
+		$tag = $tag_repo->FindTag($id);
 		if (count($tag->getentryTag()) == 0) {
 			$flush = $tag_repo->DeleteTag($id);
 			$status = (($flush) ? "Tag no Elimindo" : "Tag eliminado");

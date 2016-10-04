@@ -1,70 +1,58 @@
-{% extends "BlogBundle:Default:layout.html.twig" %}
-
-{% block content %}
+{% extends "BlogBundle:Default:layout.html.twig" %} {% block content %}
 <div class="container">
-      <div class="blog-header">
-        <h1 class="blog-title">Symfony3 Blog</h1>
-        <p class="lead blog-description">Test blog made with symfony.</p>
-      </div>
-
-      <div class="row">
-
+    <div class="row">
+        <div class="blog-header">
+            <h1 class="blog-title">Symfony3 Blog</h1>
+            <p class="lead blog-description">Test blog made with symfony.</p>
+        </div>
         <div class="col-sm-8 blog-main">
-          {% for entry in entries %}
-           <div class="blog-post">
-            <h2 class="blog-post-title"> {{entry.title}} </h2>
-            <p class="blog-post-meta"> {{entry.created.date}} by <a href="#">{{entry.user.name}}</a></p>
-
-            <p>{{entry.content}}</p>
-            <hr>
-            <p> {{dump(entry)}}</p>
-          </div><!-- /.blog-post -->
-          <hr>   
-          {% endfor %}
-
-          <nav>
-            <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </nav>
-
-        </div><!-- /.blog-main -->
-
+            {% for entry in entries %}
+            <div class="blog-post">
+                <h2 class="blog-post-title"> {{entry.title}} </h2>
+                <p class="blog-post-meta"> {{entry.created.date}} by <a href="#">{{entry.user.name}}</a></p>
+                <p><img src="{{asset("/upload/"~entry.image)}}" alt="PostImage"> </p>
+                <p>{{entry.content}}</p>
+                <p>{% for tag in entry.entryTag %}
+                    <small> {{ tag.tag.name }} </small> {% endfor %}
+                </p>
+                <p></p>
+            </div>
+            <!-- /.blog-post -->
+            <hr> {% endfor %}
+            <nav class="text-center">
+                <ul class="pagination">
+                    {% if page!=1 %}
+                    <li><a href="{{path('blog_homepage',{"page":page-1})}}">Anterior</a></li>{% endif %} {% for i in page..pagecount %}
+                    <li><a href="{{path('blog_homepage',{"page":i})}} ">{{i}}</a></li>
+                    {% endfor %} {% if page!=pagecount %}
+                    <li><a href="{{path('blog_homepage',{"page":pagecount})}}">Ultimo</a></li>{% endif %}
+                </ul>
+            </nav>
+            <div class="clearix"></div>
+        </div>
+        <!-- /.blog-main -->
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          </div>
-          <div class="sidebar-module">
-            <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
-            </ol>
-          </div>
-          <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-          </div>
-        </div><!-- /.blog-sidebar -->
-
-      </div><!-- /.row -->
-
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>Categorias</h4>
+                <ol class="list-unstyled">
+                    {% include 'BlogBundle:Blogdata:menucategories.html.twig' with { 'categories' : categories } %}
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.blog-sidebar -->
     </div>
-
-    {% endblock %}
+    <!-- /.row -->
+</div>
+{% endblock %}

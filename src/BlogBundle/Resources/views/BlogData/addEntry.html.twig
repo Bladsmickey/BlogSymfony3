@@ -39,8 +39,18 @@
 	    	<tr>
 				<td>{{entry.title}}</td>
 				<td>{{entry.category.name}}</td>
+				{% if app.user != null %}
+				{% if entry.user.id == app.user.id %}
+				    
+				
 				<td><a href="{{path("editentry", {"id": entry.id})}}" title=""><span data-id=" {{entry.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Editar</td>
 				<td><a href="{{path("deleteentry", {"id": entry.id})}}" title=""><span data-id=" {{entry.id}} " class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> Eliminar </td>
+				{% else %}
+				<td>No tienes permisos para editar esta entrada</td>
+				{% endif %}
+				{% else %}
+				<td>Debes iniciar sesion para editar o eliminar</td>
+				{% endif %}
 
 			</tr>
 	{% endfor %}

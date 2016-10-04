@@ -16,10 +16,11 @@ class EntriesController extends Controller {
 		$this->session = new Session();
 
 	}
-	public function indexAction(Request $request) {
+	public function indexAction($page) {
 		$em = $this->getDoctrine()->getManager();
 		$entries_repo = $em->getRepository("BlogBundle:Entry");
-		$entries = $entries_repo->findAll();
+		$entries = $entries_repo->PaginateEntries(2, $page);
+		dump($entries);die();
 		return $this->render('BlogBundle:BlogData:MainBlog.html.twig', array("entries" => $entries));
 	}
 
@@ -38,7 +39,7 @@ class EntriesController extends Controller {
 			}
 			$this->session->getFlashBag()->add("session", $status);
 		}
-		$entries = $entries_repo->findAll();
+		$entries = $entries_repo->AllEntries();
 		return $this->render('BlogBundle:BlogData:addEntry.html.twig', array(
 			"entries" => $entries,
 			"form" => $form->createView(),
@@ -69,7 +70,7 @@ class EntriesController extends Controller {
 			}
 			$this->session->getFlashBag()->add("session", $status);
 		}
-		$entries = $entries_repo->findAll();
+		$entries = $entries_repo->AllEntries();
 		return $this->render('BlogBundle:BlogData:addEntry.html.twig', array(
 			"entries" => $entries,
 			"form" => $form->createView(),
