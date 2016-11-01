@@ -18,7 +18,6 @@ class CategoriesController extends Controller {
 	}
 
 	public function indexCategoryAction($category, $page) {
-
 		$em = $this->getDoctrine()->getManager();
 		$entries_repo = $em->getRepository("BlogBundle:Entry");
 		$categories_repo = $em->getRepository("BlogBundle:Category");
@@ -30,11 +29,11 @@ class CategoriesController extends Controller {
 		$categories = $categories_repo->AllCategories();
 		return $this->render('BlogBundle:BlogData:MainBlog.html.twig', array(
 			'entries' => $entries,
+			'category' => $category,
 			'categories' => $categories,
 			'totalitems' => $totalItems,
 			'pagecount' => $pagecount,
 			'page' => $page));
-
 	}
 
 	/* Inicio controlador de categorias*/

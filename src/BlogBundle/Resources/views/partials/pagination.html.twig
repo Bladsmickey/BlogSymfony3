@@ -1,0 +1,21 @@
+{% if category is defined %}
+<nav class="text-center">
+    <ul class="pagination">
+        {% if page!=1 %}
+        <li><a href="{{path('blog_category',{"category": category, "page":page-1})}}">Anterior</a></li>{% endif %} {% for i in page..pagecount %}
+        <li><a href="{{path('blog_category',{"category": category, "page":i})}} ">{{i}}</a></li>
+        {% endfor %} {% if page!=pagecount %}
+        <li><a href="{{path('blog_category',{"category": category, "page":pagecount})}}">Ultimo</a></li>{% endif %}
+    </ul>
+</nav>
+{% else %}
+<nav class="text-center">
+    <ul class="pagination">
+        {% if page!=1 %}
+        <li><a href="{{path('blog_homepage',{"page":page-1})}}">Anterior</a></li>{% endif %} {% for i in page..pagecount %}
+        <li><a href="{{path('blog_homepage',{"page":i})}} ">{{i}}</a></li>
+        {% endfor %} {% if page!=pagecount %}
+        <li><a href="{{path('blog_homepage',{"page":pagecount})}}">Ultimo</a></li>{% endif %}
+    </ul>
+</nav>
+{% endif %}

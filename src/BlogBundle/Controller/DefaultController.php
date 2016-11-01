@@ -3,6 +3,7 @@
 namespace BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller {
 	public function indexAction($page) {
@@ -20,5 +21,10 @@ class DefaultController extends Controller {
 			'totalitems' => $totalItems,
 			'pagecount' => $pagecount,
 			'page' => $page));
+	}
+
+	public function langAction(Request $request) {
+
+		return $this->redirectToRoute("blog_homepage");
 	}
 }

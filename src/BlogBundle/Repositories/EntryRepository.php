@@ -61,7 +61,7 @@ class EntryRepository extends EntityRepository {
 		$em = $this->getEntityManager();
 		$dql = "SELECT e FROM \BlogBundle\Entity\Entry e WHERE e.category = :category ORDER BY e.id DESC";
 		$query = $em->createQuery($dql)
-			->setParameter("categoty", $category)
+			->setParameter("category", $category)
 			->setFirstResult($pageSize * ($currentPage - 1))
 			->setMaxResults($pageSize);
 		return $paginator = new Paginator($query, $fetchJoinCollection = true);
@@ -75,10 +75,12 @@ class EntryRepository extends EntityRepository {
 		$entry->setContent($formdata->get('content')->getData());
 		$entry->setStatus($formdata->get('status')->getData());
 		$file = $formdata['image']->getData();
-		$ext = $file->guessExtension();
-		$file_name = time() . "." . $ext;
-		$file->move("upload", $file_name);
-		$entry->setImage($file_name);
+		if ($file != null && !empty($file)) {
+			$ext = $file->guessExtension();
+			$file_name = time() . "." . $ext;
+			$file->move("upload", $file_name);
+			$entry->setImage($file_name);
+		}
 		$entry->setUser($user);
 		$entry->setCategory($formdata->get('category')->getData());
 		$em->persist($entry);
@@ -111,7 +113,7 @@ class EntryRepository extends EntityRepository {
 			return $flush_tag_entry;
 		}}
 
-	public function updateEntry($id, $formdata, $user) {
+	public function updateEntry($id, $formdata, $user, $original_image) {
 		$em = $this->getEntityManager();
 		$entry_repo = $em->getRepository("BlogBundle:Entry");
 		$tags = $formdata->get('tags')->getData();
@@ -133,10 +135,14 @@ class EntryRepository extends EntityRepository {
 		$entry->setContent($formdata->get('content')->getData());
 		$entry->setStatus($formdata->get('status')->getData());
 		$file = $formdata->get('image')->getData();
-		$ext = $file->guessExtension();
-		$file_name = time() . "." . $ext;
-		$file->move("upload", $file_name);
-		$entry->setImage($file_name);
+		if ($file != null && !empty($file)) {
+			$ext = $file->guessExtension();
+			$file_name = time() . "." . $ext;
+			$file->move("upload", $file_name);
+			$entry->setImage($file_name);
+		} else {
+			$entry->setImage($original_image);
+		}
 		$entry->setUser($user);
 		$entry->setCategory($formdata->get('category')->getData());
 		$em->persist($entry);

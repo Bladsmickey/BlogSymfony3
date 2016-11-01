@@ -59,11 +59,12 @@ class EntriesController extends Controller {
 		$em = $this->getDoctrine()->getManager();
 		$entries_repo = $em->getRepository("BlogBundle:Entry");
 		$entry = $entries_repo->findEntry($id);
+		$original_image = $entry->getImage();
 		$form = $this->createForm(EntryType::class, $entry);
 		$form->handleRequest($request);
 		if ($form->isSubmitted()) {
 			if ($form->isValid()) {
-				$flush = $entries_repo->updateEntry($id, $form, $this->getUser());
+				$flush = $entries_repo->updateEntry($id, $form, $this->getUser(), $original_image);
 				$status = (($flush) ? "Entrada no Actualizada" : "Entrada Actualizada");
 			} else {
 				$status = "Formulario Invalido";

@@ -1,6 +1,10 @@
 blog_homepage:
-    path:     /{page}
+    path:     /inicio/{page}
     defaults: { _controller: BlogBundle:Default:index, page:1 }
+
+blog_category:
+    path:     category/{category}/{page}
+    defaults: { _controller: BlogBundle:Categories:indexCategory, page:1 }
 
 addtag:
   path: /add/tag
@@ -47,3 +51,7 @@ login_check:
 
 logout:
   path: /logout
+
+blog_lang:
+    path: /lang/{_locale}
+    defaults: { _controller: BlogBundle:Default:lang }

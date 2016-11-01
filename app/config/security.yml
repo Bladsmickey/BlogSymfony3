@@ -29,6 +29,11 @@ security:
                 path: /logout
                 target: /
             provider: our_db_provider
+
+    access_control:
+        - { path: ^/add, roles: [ROLE_ADMIN] }
+        - { path: ^/delete, roles: [ROLE_ADMIN] }
+        - { path: ^/edit, roles: [ROLE_ADMIN] }
             # activate different ways to authenticate
 
             # http_basic: ~

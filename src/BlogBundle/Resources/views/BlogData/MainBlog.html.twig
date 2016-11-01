@@ -6,10 +6,11 @@
             <p class="lead blog-description">Test blog made with symfony.</p>
         </div>
         <div class="col-sm-8 blog-main">
+        {% if entries|length > 0 %}
             {% for entry in entries %}
             <div class="blog-post">
                 <h2 class="blog-post-title"> {{entry.title}} </h2>
-                <p class="blog-post-meta"> {{entry.created.date}} by <a href="#">{{entry.user.name}}</a></p>
+                <p class="blog-post-meta"> {{entry.created.date}} by <a href="#">{{entry.user.name}}</a>| {% trans %} Category {% endtrans %} : {{entry.category}}</p>
                 <p><img src="{{asset("/upload/"~entry.image)}}" alt="PostImage"> </p>
                 <p>{{entry.content}}</p>
                 <p>{% for tag in entry.entryTag %}
@@ -19,15 +20,11 @@
             </div>
             <!-- /.blog-post -->
             <hr> {% endfor %}
-            <nav class="text-center">
-                <ul class="pagination">
-                    {% if page!=1 %}
-                    <li><a href="{{path('blog_homepage',{"page":page-1})}}">Anterior</a></li>{% endif %} {% for i in page..pagecount %}
-                    <li><a href="{{path('blog_homepage',{"page":i})}} ">{{i}}</a></li>
-                    {% endfor %} {% if page!=pagecount %}
-                    <li><a href="{{path('blog_homepage',{"page":pagecount})}}">Ultimo</a></li>{% endif %}
-                </ul>
-            </nav>
+            {{ include('BlogBundle:partials:pagination.html.twig') }}
+            {% endif %}
+            <div class="col-md-12">
+                No existen entradas disponibles
+            </div>
             <div class="clearix"></div>
         </div>
         <!-- /.blog-main -->
